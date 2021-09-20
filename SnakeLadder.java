@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class SnakeLadder{
+public class SnakeLadder {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -10,21 +10,28 @@ public class SnakeLadder{
 
 	public static void option() {
 		int position = 0;
-		while (position <= 100) {
+		while (position < 100) {
 			int luck = (int) (Math.floor(Math.random() * 10) % 3 + 1);
 			int dice = rolls_dice();
 			System.out.println("the dice is " + dice);
-			System.out.println("the luck is " + luck);
 			switch (luck) {
 			case 1:
-				System.out.println("The position is " + position);
+				System.out.println("the position is " + position);
 				break;
 			case 2:
 				position += dice;
-				System.out.println("Playing: " + position);
+				if (position > 100) {
+					position = position - dice;
+				}
+				System.out.println("the position is " + position);
 				break;
-			default:
-				System.out.println("player not playing!!!");
+			case 3:
+				position = position - dice;
+				System.out.println("the postition is " + position);
+				if (position < 0) {
+					position = 0;
+				}
+				;
 				break;
 			}
 		}
